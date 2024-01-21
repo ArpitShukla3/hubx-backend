@@ -14,7 +14,13 @@ app.use(cors({
     credentials:true
 }));
 app.use(express.json());
-app.use(router);
+app.use("/api",router);
+app.use("",(req,res)=>{
+    return res.status(200).json({
+        success:true,
+        message:"working fine"
+    })
+})
 app.use(mediaRoute);
 app.listen(process.env.PORT,()=>{
     console.log("Backend ready at port number 4000");
